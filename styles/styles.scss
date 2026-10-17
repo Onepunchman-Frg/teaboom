@@ -2,18 +2,21 @@
     --text-color-primary: #202020;
     --text-color-secondary: #444;
     --text-color-gray: #808080;
+    --text-color-dark-gray: #606060;
     --text-color-active: #f5d730;
 
     --bg-color-primary: #e9f2c3;
     --bg-color-secondary: #f6f7f8;
     --bg-color-active: #202020;
 
+    --bg-color-folders-title: #fefcef;
+
     --price-color: #ff0000;
     --accent-color: #f37021;
     --accent-color-hover: #ce4e0b;
     --border-color: #e0e0e0;
 
-    --container-max: 1440px;
+    --container-max: 1200px;
     --container-padding: 16px;
     --sidebar-width: 280px;
 }
@@ -49,7 +52,7 @@ body {
     min-width: 320px;
     background: url(../images/site_bg.png);
     font-family: "Open Sans", sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -177,7 +180,7 @@ table {
 .main-block {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
 
     &__left-block,
     &__right-block {
@@ -217,20 +220,48 @@ table {
 }
 
 .site-folders {
-    padding: 16px;
-    background: #fff;
+    padding: 8px;
+
+    &__inner {
+        border: 1px solid var(--border-color);
+        background: var(--bg-color-secondary);
+    }
 
     &__title {
-        margin-bottom: 12px;
         color: var(--text-color-primary);
-        font-weight: 600;
+        font-weight: 700;
+        background: var(--bg-color-folders-title);
+        text-transform: uppercase;
+        font-size: 18px;
+        line-height: 30px;
+        padding: 15px 25px;
     }
 
     &__list {
         ul {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+
+            &:first-child {
+                & > a {
+                    border: none;
+                }
+            }
+
+            a {
+                display: inline-flex;
+                padding: 10px 25px;
+                font-size: 14px;
+                width: 100%;
+                border-top: 1px solid var(--border-color);
+                color: var(--text-color-dark-gray);
+                font-weight: 600;
+                transition: color 0.3s;
+
+                &:hover {
+                    color: var(--text-color-primary);
+                }
+            }
         }
     }
 }
@@ -292,7 +323,6 @@ table {
                 height: 56px;
                 padding: 0;
                 border: 1px solid var(--border-color);
-                border-radius: 4px;
                 background: #fff;
                 color: var(--text-color-primary);
                 font-size: 22px;
@@ -322,7 +352,6 @@ table {
                     object-fit: cover;
                     cursor: pointer;
                     border: 1px solid var(--border-color);
-                    border-radius: 4px;
                 }
 
                 &.is-active img {
@@ -336,10 +365,10 @@ table {
         .card-block-options-item {
             margin-bottom: 20px;
 
-            > span {
+            &__title {
                 display: block;
                 margin-bottom: 8px;
-                font-weight: 500;
+                color: var(--text-color-gray);
             }
 
             .card-block-options-list {
@@ -349,13 +378,12 @@ table {
 
                 .card-block-options-list-item {
                     border: 1px solid var(--border-color);
-                    border-radius: 3px;
                     transition: background 0.2s, border-color 0.2s, color 0.2s;
 
                     button {
                         display: block;
-                        min-height: 40px;
-                        padding: 8px 12px;
+                        min-height: 30px;
+                        padding: 6px 12px;
                         color: inherit;
                     }
 
@@ -386,16 +414,19 @@ table {
 
     .card-block-add {
         display: flex;
+        margin-top: 16px;
         margin-bottom: 16px;
         gap: 12px;
         justify-content: space-between;
+        padding: 12px;
+        background: var(--bg-color-secondary);
     }
 
     .card-block-prices {
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
-        gap: 6px;
+        gap: 2px;
 
         .card-block-price {
 
@@ -414,7 +445,6 @@ table {
     }
 
     .card-block-button {
-        margin-top: 12px;
 
         .buy-button {
             display: flex;
@@ -422,7 +452,6 @@ table {
             justify-content: center;
             min-width: 44px;
             min-height: 44px;
-            border-radius: 6px;
             background: var(--bg-color-primary);
             color: var(--text-color-secondary);
             font-size: 1.4em;
@@ -459,6 +488,10 @@ table {
         background: var(--bg-color-active);
         color: var(--text-color-active);
     }
+
+    .card-block-slider-item:hover {
+        cursor: zoom-in;
+    }
 }
 
 @media (min-width: 768px) {
@@ -478,7 +511,7 @@ table {
     }
 
     .main-block {
-        gap: 28px;
+        gap: 20px;
     }
 
     .path-block {
@@ -551,7 +584,7 @@ table {
     .main-block {
         flex-direction: row;
         align-items: flex-start;
-        gap: 30px;
+        gap: 20px;
 
         &__left-block {
             flex: 1 1 auto;
